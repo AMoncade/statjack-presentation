@@ -29,7 +29,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#080c14;color:#e2e8f
 
 /* ===== SLIDE SYSTEM ===== */
 .slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
-  gap:.4em;padding:clamp(24px,3.5vh,52px) 6vw;opacity:0;pointer-events:none;
+  gap:.4em;padding:clamp(24px,3.5vh,52px) 6vw clamp(70px,8vh,100px);opacity:0;pointer-events:none;
   transition:opacity .5s ease,transform .55s cubic-bezier(.2,.7,.2,1),filter .5s ease;
   transform:translateX(70px) scale(.97);filter:blur(4px);background:#080c14;z-index:1;}
 .slide.active{opacity:1;pointer-events:auto;transform:translateX(0) scale(1);filter:blur(0);}
@@ -107,14 +107,14 @@ em{color:#fbbf24;font-style:italic;}
 
 /* ===== PROBABILITY RINGS ===== */
 @property --p{syntax:'<number>';inherits:false;initial-value:0;}
-.prob-row{display:flex;gap:40px;justify-content:center;margin:24px 0;}
+.prob-row{display:flex;gap:30px;justify-content:center;margin:8px 0;}
 .prob-item{text-align:center;}
-.prob-ring{--p:0;width:7.6rem;height:7.6rem;border-radius:50%;display:flex;align-items:center;
+.prob-ring{--p:0;width:5rem;height:5rem;border-radius:50%;display:flex;align-items:center;
   justify-content:center;margin:0 auto 10px;
   background:conic-gradient(var(--rc) calc(var(--p)*1%),rgba(255,255,255,.04) 0);
   transition:--p 1.2s cubic-bezier(.2,.7,.2,1);}
 .slide.active .prob-ring.show{--p:var(--target);}
-.prob-inner{width:5.7rem;height:5.7rem;border-radius:50%;background:#0d1220;display:flex;
+.prob-inner{width:3.6rem;height:3.6rem;border-radius:50%;background:#0d1220;display:flex;
   align-items:center;justify-content:center;font-size:1.5em;font-weight:800;color:#f1f5f9;}
 .ring-red{--rc:#ef4444;}
 .ring-green{--rc:#10b981;}
@@ -249,6 +249,39 @@ em{color:#fbbf24;font-style:italic;}
 .stat-strip .sn{font-size:2.7em;font-weight:800;color:#34d399;line-height:1;}
 .stat-strip .sl{font-size:.52em;color:#64748b;margin-top:6px;text-transform:uppercase;letter-spacing:.05em;}
 
+
+/* ===== DEMO SLIDE COMPACT FLOW ===== */
+.demo-flow{
+  max-width:1000px;
+  width:100%;
+  flex-wrap:nowrap;
+  gap:8px;
+}
+.demo-flow .flow-step{
+  flex:1 1 0;
+  min-width:0;
+  max-width:none;
+  height:5.2rem;
+  padding:.85em .65em;
+}
+.demo-flow .flow-arr{
+  margin:0 2px;
+}
+.demo-flow .flow-step .fi{
+  font-size:1.15em;
+  margin-bottom:4px;
+}
+.demo-flow .flow-step .fl{
+  font-size:.5em;
+}
+.demo-flow .flow-step .fd{
+  font-size:.43em;
+}
+@media(max-width:900px){
+  .demo-flow{flex-wrap:wrap;}
+  .demo-flow .flow-step{flex:1 1 40%;}
+}
+
 /* ===== NAVIGATION ===== */
 .nav{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);display:flex;align-items:center;
   gap:16px;z-index:200;background:rgba(8,12,20,.85);border:1px solid rgba(255,255,255,.08);
@@ -349,7 +382,6 @@ em{color:#fbbf24;font-style:italic;}
     <span class="flow-arr anim">&#10132;</span>
     <div class="flow-step anim"><span class="fi">&#127942;</span><span class="fl">Bilan</span><span class="fd">Leçons apprises</span></div>
   </div>
-  <span class="who">Adrien</span>
 </div>
 
 <!-- ============================================================ -->
@@ -374,7 +406,6 @@ em{color:#fbbf24;font-style:italic;}
   <p class="anim" style="text-align:center;margin-top:26px;color:#fbbf24;font-weight:600;font-size:.75em;">
     Aucun environnement <em>sans risque</em> pour apprendre
   </p>
-  <span class="who">Adrien</span>
 </div>
 
 <!-- ============================================================ -->
@@ -405,7 +436,6 @@ em{color:#fbbf24;font-style:italic;}
   <p class="anim" style="text-align:center;font-size:.6em;color:#64748b;margin-top:1.2em;">
     <strong style="color:#34d399;">Objectifs</strong> &nbsp;·&nbsp; Calcul exact en temps réel &nbsp;·&nbsp; Apprentissage guidé &nbsp;·&nbsp; Rigueur mathématique assumée
   </p>
-  <span class="who">Adrien</span>
 </div>
 
 <!-- ============================================================ -->
@@ -440,7 +470,6 @@ em{color:#fbbf24;font-style:italic;}
   <p class="anim" style="text-align:center;font-size:.5em;color:#64748b;margin-top:6px;">
     f(T, S, v) ajuste les As (soft / hard) — pas une simple somme. <span class="code-ref">probabilites.py · _etat_apres_valeur</span>
   </p>
-  <span class="who">Félix</span>
 </div>
 
 <!-- ============================================================ -->
@@ -461,7 +490,7 @@ em{color:#fbbf24;font-style:italic;}
       </ul>
       <div class="formula" style="margin-top:8px;">EV = &Sigma; gains / N simulations</div>
       <p style="font-size:.5em;color:#64748b;margin-top:8px;">
-        Monte Carlo = <em>visuel</em>. La reco vient de l'EV <strong>exact</strong>.
+        Monte Carlo = <em>visuelle / pédagogique</em>. La reco vient de l'EV <strong>exact</strong> basé sur les probabilités estimées par Monte Carlo.
       </p>
     </div>
     <div class="anim" style="flex:1;min-width:280px;">
@@ -481,7 +510,6 @@ em{color:#fbbf24;font-style:italic;}
       <p style="font-size:.46em;color:#64748b;text-align:center;margin-top:8px;">Accessible via « Voir Graphe » (matplotlib) — <span class="code-ref">graphe_simulation.py</span></p>
     </div>
   </div>
-  <span class="who">Félix</span>
 </div>
 
 <!-- ============================================================ -->
@@ -491,9 +519,9 @@ em{color:#fbbf24;font-style:italic;}
   <span class="tag tag-blue anim">Notion scientifique 3 — le cœur du moteur</span>
   <h2 class="anim">Décision optimale : EV récursif mémoïsé</h2>
   <hr class="divider show anim">
-  <div style="display:flex;gap:36px;align-items:center;flex-wrap:wrap;">
-    <div class="tree anim" style="flex:1;min-width:300px;">
-      <svg viewBox="0 0 340 200">
+  <div style="display:flex;gap:30px;align-items:center;flex-wrap:nowrap;">
+    <div class="tree anim" style="flex:0 0 75%;max-width:788px;">
+      <svg viewBox="0 0 340 200" style="max-height:413px;">
         <path class="edge show" d="M170,28 L80,84"/>
         <path class="edge show" d="M170,28 L260,84"/>
         <path class="edge show" d="M260,84 L200,150"/>
@@ -513,20 +541,19 @@ em{color:#fbbf24;font-style:italic;}
         <text class="node-s" x="320" y="161">récursion</text>
       </svg>
     </div>
-    <div class="anim" style="flex:1;min-width:300px;">
+    <div class="anim" style="flex:1;">
       <h3>Arbre de décisions</h3>
-      <ul style="list-style:none;font-size:.62em;line-height:2;color:#94a3b8;margin-top:8px;">
+      <ul style="list-style:none;font-size:.55em;line-height:1.7;color:#94a3b8;margin-top:4px;">
         <li>&#9679; <strong style="color:#34d399;">Mémoïsation</strong> sur la clé <span class="code-ref">(total, as souples, composition du sabot)</span></li>
         <li>&#9679; <strong style="color:#34d399;">Coupures</strong> : pas de Hit sur 19+ dur ni 20+</li>
         <li>&#9679; Résultat <strong style="color:#34d399;">exact</strong>, pas une approximation</li>
       </ul>
     </div>
   </div>
-  <div class="anim" style="text-align:center;margin-top:6px;">
-    <div class="formula">EV*(T, S) = max( EV<sub>stand</sub>(T) , &nbsp;&Sigma;<sub>v</sub> p(v) &middot; EV*(T<sub>v</sub>, S<sub>v</sub>) )</div>
-    <p style="font-size:.48em;color:#64748b;margin-top:6px;"><span class="code-ref">probabilites.py · ev_hit_recursive_counts()</span> — la même formule est affichée dans l'aide de l'application</p>
+  <div class="anim" style="text-align:center;margin-top:2px;">
+    <div class="formula" style="padding:5px 14px;font-size:.55em;">EV*(T, S) = max( EV<sub>stand</sub>(T) , &nbsp;&Sigma;<sub>v</sub> p(v) &middot; EV*(T<sub>v</sub>, S<sub>v</sub>) )</div>
+    <p style="font-size:.42em;color:#64748b;margin-top:3px;line-height:1.5;"><span class="code-ref">probabilites.py · ev_hit_recursive_counts()</span> — la même formule est affichée dans l'aide de l'application<br><span class="code-ref">probabilites.py · ev_optimal()</span> — la même formule est affichée dans l'aide de l'application</p>
   </div>
-  <span class="who">Félix</span>
 </div>
 
 <!-- ============================================================ -->
@@ -559,7 +586,6 @@ em{color:#fbbf24;font-style:italic;}
     <div class="formula">True Count = Running Count / (cartes restantes / 52)</div>
     <p style="font-size:.48em;color:#64748b;margin-top:6px;">Renvoie 0 si le sabot est vide — <span class="code-ref">sabot.py · true_count()</span></p>
   </div>
-  <span class="who">Félix</span>
 </div>
 
 <!-- ============================================================ -->
@@ -609,31 +635,12 @@ em{color:#fbbf24;font-style:italic;}
     <span>3 — Résultat (paiement + animation)</span>
   </div>
   <p class="anim" style="font-size:.5em;color:#64748b;text-align:center;margin-top:8px;">52 images de cartes PNG &nbsp;&middot;&nbsp; sabot de 6 paquets &nbsp;&middot;&nbsp; 5 widgets personnalisés</p>
-  <span class="who">Édouard</span>
 </div>
 
 <!-- ============================================================ -->
-<!-- SLIDE 10 / 20 : DÉMONSTRATION                          -->
+<!-- SLIDE 10 / 20 : TUTORIEL                               -->
 <!-- ============================================================ -->
-<div class="slide center-slide bg-center" id="s10">
-  <div class="demo-pulse anim pop">&#9654;</div>
-  <h2 class="anim" style="text-align:center;font-size:2.4em;">Démonstration en direct</h2>
-  <p class="subtitle anim" style="text-align:center;font-size:.85em;">Édouard Gagné</p>
-  <hr class="divider show anim" style="margin:22px auto 30px;">
-  <div class="flow anim" style="max-width:760px;">
-    <div class="flow-step"><span class="fi">&#127183;</span><span class="fl">Mise + distribution</span></div>
-    <span class="flow-arr">&#10132;</span>
-    <div class="flow-step"><span class="fi">&#128202;</span><span class="fl">Panneau de probabilités</span></div>
-    <span class="flow-arr">&#10132;</span>
-    <div class="flow-step active"><span class="fi">&#128200;</span><span class="fl">Mode Entraînement + graphe</span></div>
-  </div>
-  <p class="anim" style="font-size:.5em;color:#475569;margin-top:20px;">Démo exécutée en direct sur notre poste &nbsp;·&nbsp; touche <strong>B</strong> = écran noir</p>
-</div>
-
-<!-- ============================================================ -->
-<!-- SLIDE 11 / 20 : TUTORIEL                               -->
-<!-- ============================================================ -->
-<div class="slide bg-glow-green" id="s11">
+<div class="slide bg-glow-green" id="s10">
   <span class="tag tag-green anim">Apprentissage guidé</span>
   <h2 class="anim">Tutoriel interactif en 6 étapes</h2>
   <hr class="divider show anim">
@@ -666,13 +673,12 @@ em{color:#fbbf24;font-style:italic;}
   <p class="anim" style="text-align:center;font-size:.6em;color:#34d399;margin-top:16px;font-weight:600;">
     Mains prédéfinies — seule la bonne action est disponible pour guider l'apprentissage
   </p>
-  <span class="who">Édouard</span>
 </div>
 
 <!-- ============================================================ -->
-<!-- SLIDE 12 / 20 : MODE ENTRAÎNEMENT — NOUVELLE           -->
+<!-- SLIDE 11 / 20 : MODE ENTRAÎNEMENT — NOUVELLE           -->
 <!-- ============================================================ -->
-<div class="slide bg-glow-gold" id="s12">
+<div class="slide bg-glow-gold" id="s11">
   <span class="tag tag-gold anim">Pédagogie active</span>
   <h2 class="anim">Mode Entraînement : l'erreur devient une leçon</h2>
   <hr class="divider show anim">
@@ -700,8 +706,29 @@ em{color:#fbbf24;font-style:italic;}
       </div>
     </div>
   </div>
-  <span class="who">Édouard</span>
 </div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 12 / 20 : DÉMONSTRATION                          -->
+<!-- ============================================================ -->
+<div class="slide center-slide bg-center" id="s12">
+  <div class="demo-pulse anim pop">&#9654;</div>
+  <h2 class="anim" style="text-align:center;font-size:2.4em;">Démonstration en direct</h2>
+  <p class="subtitle anim" style="text-align:center;font-size:.85em;">Édouard Gagné</p>
+  <hr class="divider show anim" style="margin:22px auto 30px;">
+  <div class="flow anim demo-flow">
+    <div class="flow-step"><span class="fi">&#127183;</span><span class="fl">Jeu normal</span><span class="fd">Mise + probas</span></div>
+    <span class="flow-arr">&#10132;</span>
+    <div class="flow-step"><span class="fi">&#127891;</span><span class="fl">Tutoriel</span><span class="fd">Guidage</span></div>
+    <span class="flow-arr">&#10132;</span>
+    <div class="flow-step active"><span class="fi">&#9888;</span><span class="fl">Entraînement</span><span class="fd">Correction</span></div>
+    <span class="flow-arr">&#10132;</span>
+    <div class="flow-step"><span class="fi">&#128200;</span><span class="fl">Graphe</span><span class="fd">Convergence</span></div>
+  </div>
+  <p class="anim" style="font-size:.5em;color:#475569;margin-top:20px;">Démo exécutée en direct sur notre poste &nbsp;·&nbsp; touche <strong>B</strong> = écran noir</p>
+</div>
+
+
 
 <!-- ============================================================ -->
 <!-- SLIDE 13 / 20 : ARCHITECTURE MVC                       -->
@@ -732,7 +759,6 @@ em{color:#fbbf24;font-style:italic;}
     <div class="si"><div class="sn"><span data-count="3030" data-sep="1">0</span></div><div class="sl">lignes de code</div></div>
     <div class="si"><div class="sn"><span data-count="52">0</span></div><div class="sl">images de cartes</div></div>
   </div>
-  <span class="who">Luka</span>
 </div>
 
 <!-- ============================================================ -->
@@ -761,7 +787,6 @@ em{color:#fbbf24;font-style:italic;}
       <p><span class="code-ref">id_calcul</span> : un résultat dépassé est ignoré</p>
     </div>
   </div>
-  <span class="who">Luka</span>
 </div>
 
 <!-- ============================================================ -->
@@ -795,7 +820,6 @@ em{color:#fbbf24;font-style:italic;}
   <p class="anim" style="font-size:.5em;color:#64748b;margin-top:14px;text-align:center;">
     Déjà en place dans le code livré — <span class="code-ref">controllers/workers/worker_probas.py</span>
   </p>
-  <span class="who">Luka</span>
 </div>
 
 <!-- ============================================================ -->
@@ -827,7 +851,6 @@ em{color:#fbbf24;font-style:italic;}
       <p>Chaque carte parcourue, zéro approximation</p>
     </div>
   </div>
-  <span class="who">Luka</span>
 </div>
 
 <!-- ============================================================ -->
@@ -853,7 +876,6 @@ em{color:#fbbf24;font-style:italic;}
   <p class="anim" style="text-align:center;font-size:.7em;color:#34d399;font-weight:600;">
     Priorité assumée : la rigueur — coût absorbé par le thread
   </p>
-  <span class="who">Luka</span>
 </div>
 
 <!-- ============================================================ -->
@@ -872,7 +894,6 @@ em{color:#fbbf24;font-style:italic;}
   <p class="anim" style="text-align:center;font-size:.58em;color:#64748b;margin-top:14px;">
     Choix assumés sous contrainte de temps — la base est conçue pour les accueillir
   </p>
-  <span class="who">Adrien</span>
 </div>
 
 <!-- ============================================================ -->
@@ -887,7 +908,6 @@ em{color:#fbbf24;font-style:italic;}
     <li class="anim"><strong>Architecture MVC stricte</strong><br>Maintenir la séparation logique / interface malgré la complexité croissante du moteur mathématique</li>
     <li class="anim"><strong>Compromis d'ingénierie réels</strong><br>Assumer des choix techniques face aux contraintes de temps et de performance</li>
   </ul>
-  <span class="who">Adrien</span>
 </div>
 
 <!-- ============================================================ -->
