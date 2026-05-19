@@ -762,35 +762,7 @@ em{color:#fbbf24;font-style:italic;}
 </div>
 
 <!-- ============================================================ -->
-<!-- SLIDE 14 / 20 : FLUX QT SIGNAL / SLOT — NOUVELLE       -->
-<!-- ============================================================ -->
-<div class="slide bg-glow-blue" id="s14">
-  <span class="tag tag-blue anim">Architecture — communication</span>
-  <h2 class="anim">Comment le MVC dialogue : signaux &amp; slots Qt</h2>
-  <hr class="divider show anim">
-  <div class="flow" style="margin:34px 0;">
-    <div class="flow-step active anim"><span class="fi">&#128433;</span><span class="fl">Vue</span><span class="fd">émet un Signal (clic Hit)</span></div>
-    <span class="flow-arr anim">&#10132;</span>
-    <div class="flow-step anim"><span class="fi">&#129518;</span><span class="fl">Contrôleur</span><span class="fd">slot connecté · met à jour le Modèle</span></div>
-    <span class="flow-arr anim">&#10132;</span>
-    <div class="flow-step anim"><span class="fi">&#129309;</span><span class="fl">Worker (QThread)</span><span class="fd">calcule les probabilités</span></div>
-    <span class="flow-arr anim">&#10132;</span>
-    <div class="flow-step active anim"><span class="fi">&#128202;</span><span class="fl">Vue</span><span class="fd">signal « terminé » &#10132; affichage</span></div>
-  </div>
-  <div class="grid cols-2" style="gap:18px;">
-    <div class="box anim">
-      <h4 style="color:#60a5fa;">Découplage total</h4>
-      <p>Vue ↔ Modèle via <span class="code-ref">Signal</span> / <span class="code-ref">connect()</span></p>
-    </div>
-    <div class="box anim">
-      <h4 style="color:#34d399;">Résultats périmés filtrés</h4>
-      <p><span class="code-ref">id_calcul</span> : un résultat dépassé est ignoré</p>
-    </div>
-  </div>
-</div>
-
-<!-- ============================================================ -->
-<!-- SLIDE 15 / 20 : DÉFI RÉSOLU — THREADING (reformule l'ancien) -->
+<!-- SLIDE 14 / 19 : DÉFI RÉSOLU — THREADING (reformule l'ancien) -->
 <!-- ============================================================ -->
 <div class="slide bg-glow-green" id="s15">
   <span class="tag tag-green anim">Défi résolu</span>
@@ -932,7 +904,7 @@ em{color:#fbbf24;font-style:italic;}
 <!-- ===== NAVIGATION ===== -->
 <nav class="nav">
   <button onclick="prev()" title="Précédente">&#9664;</button>
-  <span class="counter" id="counter">1 / 20</span>
+  <span class="counter" id="counter">1 / 19</span>
   <button onclick="next()" title="Suivante">&#9654;</button>
 </nav>
 <div class="kb-hint">Flèches pour naviguer &middot; F11 plein écran &middot; B écran noir</div>
