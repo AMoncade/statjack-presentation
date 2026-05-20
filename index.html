@@ -340,6 +340,29 @@ em{color:#fbbf24;font-style:italic;}
 }
 
 .kb-hint{position:fixed;top:16px;right:20px;font-size:.4em;color:rgba(255,255,255,.14);z-index:200;}
+
+/* ===== Présentateur : repères visuels pour guider l'orateur ===== */
+@keyframes step-glow{
+  0%,100%{box-shadow:0 0 0 0 rgba(52,211,153,0);border-color:rgba(52,211,153,.4);}
+  50%{box-shadow:0 0 24px rgba(52,211,153,.45);border-color:rgba(52,211,153,.9);}
+}
+.slide.active .me-step{animation:step-glow 2.4s ease-in-out infinite;}
+
+@keyframes big-num-pop{
+  0%{opacity:0;transform:scale(.4);filter:blur(8px);}
+  60%{opacity:1;transform:scale(1.18);filter:blur(0);}
+  100%{opacity:1;transform:scale(1);}
+}
+.big-num{display:inline-block;font-weight:900;font-size:1.6em;opacity:0;
+  background:linear-gradient(135deg,#fbbf24,#f87171);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.big-num.green{background:linear-gradient(135deg,#10b981,#34d399);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.slide.active .big-num.show{animation:big-num-pop .9s cubic-bezier(.2,.7,.2,1) forwards;}
+
+@keyframes arrow-bob{0%,100%{transform:translateX(-6px);}50%{transform:translateX(2px);}}
+.cue-arrow{display:inline-block;color:#fbbf24;font-weight:900;margin-right:8px;
+  animation:arrow-bob 1.4s ease-in-out infinite;}
 </style>
 </head>
 <body>
@@ -372,15 +395,15 @@ em{color:#fbbf24;font-style:italic;}
   <h2 class="anim">Le fil de la présentation</h2>
   <hr class="divider show anim">
   <div class="flow">
-    <div class="flow-step anim"><span class="fi">&#127919;</span><span class="fl">Problème</span><span class="fd">Pourquoi StatJack</span></div>
+    <div class="flow-step active me-step anim"><span class="fi">&#127919;</span><span class="fl">Problème</span><span class="fd">Pourquoi StatJack</span></div>
     <span class="flow-arr anim">&#10132;</span>
-    <div class="flow-step active anim"><span class="fi">&#128302;</span><span class="fl">Solution</span><span class="fd">Notions &amp; moteur</span></div>
+    <div class="flow-step anim"><span class="fi">&#128302;</span><span class="fl">Solution</span><span class="fd">Notions &amp; moteur</span></div>
     <span class="flow-arr anim">&#10132;</span>
     <div class="flow-step anim"><span class="fi">&#9654;</span><span class="fl">Démo</span><span class="fd">En direct</span></div>
     <span class="flow-arr anim">&#10132;</span>
-    <div class="flow-step active anim"><span class="fi">&#128295;</span><span class="fl">Défis &amp; limites</span><span class="fd">Choix d'ingénierie</span></div>
+    <div class="flow-step anim"><span class="fi">&#128295;</span><span class="fl">Défis &amp; limites</span><span class="fd">Choix d'ingénierie</span></div>
     <span class="flow-arr anim">&#10132;</span>
-    <div class="flow-step anim"><span class="fi">&#127942;</span><span class="fl">Bilan</span><span class="fd">Leçons apprises</span></div>
+    <div class="flow-step active me-step anim"><span class="fi">&#127942;</span><span class="fl">Bilan</span><span class="fd">Leçons apprises</span></div>
   </div>
 </div>
 
@@ -392,15 +415,17 @@ em{color:#fbbf24;font-style:italic;}
   <h2 class="anim">Le Blackjack n'est <em>pas</em> un jeu de pur hasard</h2>
   <hr class="divider show anim">
   <div class="grid cols-2">
-    <div class="box box-red anim">
+    <div class="box box-red anim" style="text-align:center;">
       <span class="icon">&#128181;</span>
       <h4 style="color:#f87171;">Sans stratégie</h4>
-      <p>Avantage de la maison de 2 à 5 %<br>Le joueur perd de l'argent inutilement</p>
+      <span class="big-num" style="display:block;margin:6px 0;">jusqu'à 5 %</span>
+      <p>Avantage de la maison<br>Le joueur perd inutilement</p>
     </div>
-    <div class="box box-green anim">
+    <div class="box box-green anim" style="text-align:center;">
       <span class="icon">&#127919;</span>
       <h4 style="color:#34d399;">Avec stratégie optimale</h4>
-      <p>Avantage de la maison sous 0,5 %<br>Chaque décision a un impact mesurable</p>
+      <span class="big-num green" style="display:block;margin:6px 0;">sous 0,5 %</span>
+      <p>Avantage de la maison<br>Chaque décision a un impact mesurable</p>
     </div>
   </div>
   <p class="anim" style="text-align:center;margin-top:26px;color:#fbbf24;font-weight:600;font-size:.75em;">
@@ -858,7 +883,7 @@ em{color:#fbbf24;font-style:italic;}
   <h2 class="anim">Limites actuelles &amp; améliorations futures</h2>
   <hr class="divider show anim">
   <ul class="road">
-    <li class="prio anim"><b>Tests automatisés &amp; CI</b>Prochaine priorité — fiabiliser le moteur</li>
+    <li class="prio anim"><b><span class="cue-arrow">&#10148;</span>Tests automatisés &amp; CI</b>Prochaine priorité — fiabiliser le moteur</li>
     <li class="anim"><b>Règles avancées</b>Dealer peek, assurance, abandon</li>
     <li class="anim"><b>Paris latéraux</b>Perfect Pairs, 21+3</li>
     <li class="anim"><b>Audio &amp; persistance</b>Thème final + stats de session</li>
@@ -970,7 +995,7 @@ em{color:#fbbf24;font-style:italic;}
       el.classList.add('show');
     });
     /* effects that key off .show toggles */
-    slide.querySelectorAll('.divider,.prob-ring,.ev-fill,.hilo-c,.tree .edge')
+    slide.querySelectorAll('.divider,.prob-ring,.ev-fill,.hilo-c,.tree .edge,.big-num')
       .forEach(function(el){el.classList.remove('show');});
     void slide.offsetWidth;
     slide.querySelectorAll('.divider').forEach(function(el){el.classList.add('show');});
@@ -981,6 +1006,10 @@ em{color:#fbbf24;font-style:italic;}
       slide.querySelectorAll('.prob-ring,.ev-fill,.tree .edge')
         .forEach(function(el){el.classList.add('show');});
     },reduce?0:120);
+    /* dramatic number pop on slide 3 — staggered after boxes appear */
+    slide.querySelectorAll('.big-num').forEach(function(el,i){
+      setTimeout(function(){el.classList.add('show');},reduce?0:450+i*180);
+    });
     /* count-up + Monte Carlo line */
     slide.querySelectorAll('[data-count]').forEach(function(el){
       setTimeout(function(){countUp(el);},reduce?0:260);
